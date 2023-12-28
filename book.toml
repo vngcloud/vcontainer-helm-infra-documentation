@@ -1,0 +1,30 @@
+[book]
+title = "vContainer Helm Infra Documentation"
+authors = ["Cuong. Duong Manh"]
+language = "en"
+multilingual = false
+src = "src"
+
+[preprocessor.theme]
+pagetoc = true
+sidebar-width = "250px"
+
+[output.html]
+default-theme = "light"
+git-repository-url = ""
+additional-css = ["theme/pagetoc.css"]
+additional-js = ["theme/pagetoc.js"]
+
+[output.html.fold]
+enable = false
+level = 1
+
+[output.html.playground]
+editable = true
+
+[output.html.print]
+enable = false
+
+[output.theme-ace]
+theme-white = "xcode"
+theme-dark = "monokai"

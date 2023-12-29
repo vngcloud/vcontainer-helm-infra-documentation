@@ -83,7 +83,7 @@ kubectl get csidriver
 </center>
 
 
-# Uninstallation
+## Uninstallation
 If you followed the instructions in the [Install the vcontainer-storage-interface chart](#install-the-vcontainer-storage-interface-chart) section to install the `vcontainer-storage-interface` chart, execute the following command to uninstall the chart:
 ```bash=
 helm uninstall vcontainer-storage-interface -n kube-system

@@ -4,7 +4,7 @@
 # Block volume
 The following manifest will first create a `StorageClass` named `my-storage-class` and subsequently generate a `PersistentVolumeClaim` named `my-pvc`. Finally, it will deploy an `nginx` `Pod` utilizing the aforementioned `PersistentVolumeClaim`:
 
-***File [block-volume.yaml](https://github.com/vngcloud/vcontainer-helm-infra-documentation/manifests/block-volume/block-volume.yaml)***
+***File [block-volume.yaml](https://github.com/vngcloud/vcontainer-helm-infra-documentation/blob/main/manifests/block-volume/block-volume.yaml)***
 ```yaml=
 apiVersion: storage.k8s.io/v1
 kind: StorageClass

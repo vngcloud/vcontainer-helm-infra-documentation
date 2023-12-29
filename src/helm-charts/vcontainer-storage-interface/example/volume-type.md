@@ -6,9 +6,11 @@ The **VNG CLOUD storage service** provides support for a variety of **Volume Typ
 
 Users can explore the available options in [the Volume Type section](https://hcm-3.console.vngcloud.vn/vserver/block-store/volume-type) on **the VNG CLOUD portal**.<br>
 
+<center>
 
-![](./../../../images/08.png)
+  ![](./../../../images/08.png)
 
+</center>
 
 The following example creates a `StorageClass` using an SSD drive with a base of 200 IOPS.
 

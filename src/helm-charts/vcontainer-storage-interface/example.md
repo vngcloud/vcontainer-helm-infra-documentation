@@ -3,3 +3,4 @@
 
 # For usage
 - [`StorageClass` based on Volume Type](example/volume-type.md)
+- [Block volume](example/block-volume.md)

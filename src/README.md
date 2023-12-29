@@ -29,4 +29,9 @@ To install the **vContainer Helm Infra** repository, use the following command:
   helm repo add vcontainer-helm-infra https://vngcloud.github.io/vcontainer-helm-infra
   helm repo update
   ```
-  
+
+<center>
+
+  ![](./images/12.png)
+
+</center>

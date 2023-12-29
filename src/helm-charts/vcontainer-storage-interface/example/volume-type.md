@@ -23,9 +23,33 @@ parameters:
 allowVolumeExpansion: true                           # MUST set this value to allow the Volume Expansion feature
 ```
 
+The following command creates a `StorageClass` based on the above configuration:
+```bash=
+cat <<EOF | kubectl apply -f-
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: my-storage-class
+provisioner: csi.vngcloud.vn
+parameters:
+  type: vtype-bacd68a4-8758-4fb6-a739-b047665e05d5
+allowVolumeExpansion: true
+EOF
+```
+
+<center>
+
+  ![](./../../../images/14.png)
+
+</center>
+
 The **vContainer Storage Interface** chart will generate two `StorageClasses` `sc-nvme-5000-delete` and `sc-ssd-200-retain`, with `sc-nvme-5000-delete` assigned as the default `StorageClass`:
 ```bash=
 kubectl get sc -owide
 ```
-  ![](./../../../images/11.png)
-  
+
+<center>
+
+  ![](./../../../images/11.1.png)
+
+</center>

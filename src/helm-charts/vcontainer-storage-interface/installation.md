@@ -31,7 +31,7 @@ helm install vcontainer-storage-interface vcontainer-helm-infra/vcontainer-stora
 
 <center>
 
-  ![](./../../images/13.png)
+  ![](./../../images/13.1.png)
 </center>
 
 ## Verify the installation

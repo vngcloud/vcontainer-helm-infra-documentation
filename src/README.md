@@ -35,3 +35,15 @@ To install the **vContainer Helm Infra** repository, use the following command:
   ![](./images/12.png)
 
 </center>
+
+# Uninstall the **vContainer Helm Infra** repository
+- To completely remove the **vContainer Helm Infra** repository, use the following command:
+```bash=
+helm repo remove vcontainer-helm-infra
+```
+
+<center>
+
+  ![](./images/16.png)
+
+</center>

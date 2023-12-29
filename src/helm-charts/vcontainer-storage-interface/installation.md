@@ -29,6 +29,11 @@ helm install vcontainer-storage-interface vcontainer-helm-infra/vcontainer-stora
   --set vcontainerConfig.clientSecret=<PUT_YOUR_SECRET_KEY>
 ```
 
+<center>
+
+  ![](./../../images/13.png)
+</center>
+
 ## Verify the installation
 After the installation is complete, execute the following command to verify the status of the `vcontainer-storage-interface` pods:
 ```bash=

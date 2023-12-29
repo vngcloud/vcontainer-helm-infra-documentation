@@ -5,7 +5,7 @@
 The following manifest will first create a `StorageClass` named `my-storage-class` and subsequently generate a `PersistentVolumeClaim` named `my-pvc`. Finally, it will deploy an `nginx` `Pod` utilizing the aforementioned `PersistentVolumeClaim`.
 
   > ⚠️ **IMPORTANT**:
-  >  - Ensure that the `.spec.resources.requests.storage` value of the `PersistentVolumeClaim` falls within the valid range specified for the corresponding volume type (refer to the **Minimum Size (GB)** and **Maximum Size (GB)** columns on the **VNG CLOUD portal**). Failure to do so will result in the `PersistentVolumeClaim` being in the `Pending` state. For additional details, please consult the [`StorageClass` based on Volume Type](./volume-type.md) section.
+  > Ensure that the `.spec.resources.requests.storage` value of the `PersistentVolumeClaim` falls within the valid range specified for the corresponding volume type (refer to the **Minimum Size (GB)** and **Maximum Size (GB)** columns on the **VNG CLOUD portal**). Failure to do so will result in the `PersistentVolumeClaim` being in the `Pending` state. For additional details, please consult the [`StorageClass` based on Volume Type](./volume-type.md) section.
 
 ***File [block-volume.yaml](https://github.com/vngcloud/vcontainer-helm-infra-documentation/blob/main/manifests/block-volume/block-volume.yaml)***
 ```yaml=

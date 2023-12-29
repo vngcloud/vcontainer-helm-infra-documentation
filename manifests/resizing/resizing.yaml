@@ -1,0 +1,51 @@
+####################################################################################################
+# Author: Cuong. Duong Manh <cuongdm3@vng.com.vn>
+# Description: This is an example of using resizing feature
+#              This example will create a StorageClass, a PVC and a Pod
+#              The Pod will use the PVC to mount a block volume to /var/lib/www/html
+#              The Pod will use nginx image to serve the content of the block volume
+####################################################################################################
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: my-expansion-storage-class                 # [1] The StorageClass name, CAN be changed
+provisioner: csi.vngcloud.vn                       # The VNG-CLOUD CSI driver name
+parameters:
+  type: vtype-93a22a9f-1ec0-4e61-84fb-75ac181c13dc # The volume type UUID
+allowVolumeExpansion: true                         # MUST set this value to turn on volume expansion feature
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-expansion-pvc                           # [2] The PVC name, CAN be changed
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi                                # [3] The PVC size, CAN be changed, this value MUST be in the valid range of the proper volume type
+  storageClassName: my-expansion-storage-class     # [4] The StorageClass name, MUST be the same as [1]
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx                                      # [5] The Pod name, CAN be changed
+spec:
+  containers:
+    - image: nginx
+      imagePullPolicy: IfNotPresent
+      name: nginx
+      ports:
+        - containerPort: 80
+          protocol: TCP
+      volumeMounts:
+        - mountPath: /var/lib/www/html
+          name: my-volume-name                     # MUST be the same as [6]
+  volumes:
+    - name: my-volume-name                         # [6] The volume name, CAN be changed
+      persistentVolumeClaim:
+        claimName: my-expansion-pvc                # MUST be the same as [2]
+        readOnly: false

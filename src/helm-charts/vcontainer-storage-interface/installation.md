@@ -32,17 +32,28 @@ helm install vcontainer-storage-interface vcontainer-helm-infra/vcontainer-stora
 <center>
 
   ![](./../../images/13.1.png)
+
 </center>
 
 ## Verify the installation
 After the installation is complete, execute the following command to verify the status of the `vcontainer-storage-interface` pods:
 ```bash=
-kubectl get pods -n kube-system -owide | grep vcontainer-storage-interface
+kubectl get pods -n kube-system | grep vcontainer-storage-interface
 ```
-  ![](./../../images/10.png)
+
+<center>
+
+  ![](./../../images/10.1.png)
+
+</center>
 
 About the **vContainer Storage Interface** plugin, user can get the information of the plugin by executing the following command:
 ```bash=
 kubectl get csidriver
 ```
-  ![](./../../images/09.png)
+
+<center>
+
+  ![](./../../images/09.1.png)
+
+</center>

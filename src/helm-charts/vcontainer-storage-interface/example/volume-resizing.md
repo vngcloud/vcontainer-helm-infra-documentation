@@ -89,7 +89,7 @@ From the **VNG CLOUD portal**, users can verify the status of the `PersistentVol
 
 
 ## Resize the Volume
-Execute the following command to expand the `PersistentVolumeClaim` `my-expansion-pvc` from $\text{20Gi}$ to $\text{30Gi}$.
+Execute the following command to expand the `PersistentVolumeClaim` `my-expansion-pvc` from \\( \text{20Gi} \\) to \\( \text{30Gi} \\).
 
 ```bash=
 kubectl patch pvc my-expansion-pvc -p '{"spec":{"resources":{"requests":{"storage":"30Gi"}}}}'

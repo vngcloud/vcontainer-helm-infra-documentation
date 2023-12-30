@@ -10,6 +10,7 @@ pagetoc = true
 sidebar-width = "250px"
 
 [output.html]
+mathjax-support = true
 default-theme = "light"
 git-repository-url = ""
 additional-css = ["theme/pagetoc.css"]

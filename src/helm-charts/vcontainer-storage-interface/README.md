@@ -8,3 +8,4 @@
   - [`StorageClass` based on Volume Type](example/volume-type.md)
   - [Block volume](example/block-volume.md)
   - [Volume resizing](example/volume-resizing.md)
+  - [NFS server](example/nfs-server.md)

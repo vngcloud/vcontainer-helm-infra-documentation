@@ -3,12 +3,12 @@
 
 # Volume resizing
 ## Prepare the resources
-Utilize the [volume-resizing.yaml](https://github.com/vngcloud/vcontainer-helm-infra-documentation/blob/main/manifests/resizing/volume-resizing.yaml) file to provision the required resources prior to resizing the `PersistentVolumeClaim`.
+Utilize the [volume-resizing.yaml](https://raw.githubusercontent.com/vngcloud/vcontainer-helm-infra-documentation/main/manifests/resizing/resizing.yaml) file to provision the required resources prior to resizing the `PersistentVolumeClaim`.
 
   > ⚠️ **IMPORTANT**:
   > To enable Volume Expansion, it is **IMPERATIVE** to set the `allowVolumeExpansion` option to `true` in the `StorageClass` manifest file.
 
-***File [volume-resizing.yaml](https://github.com/vngcloud/vcontainer-helm-infra-documentation/blob/main/manifests/resizing/volume-resizing.yaml)***
+***File [volume-resizing.yaml](https://raw.githubusercontent.com/vngcloud/vcontainer-helm-infra-documentation/main/manifests/resizing/resizing.yaml)***
 ```yaml=
 apiVersion: storage.k8s.io/v1
 kind: StorageClass

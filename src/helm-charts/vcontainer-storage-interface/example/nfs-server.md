@@ -130,7 +130,7 @@ At this moment, you **SHOULD** take note the `CLUSTER IP` of `nfs-service` servi
 ## Deploy a service to use the NFS server
 Now, I will create `PersistentVolume`, `PersistentVolumeClaim` and `nginx` Deployment, follwing the content of file nginx-deployment.yaml, you **MUST** use the IPv4 address of the `nfs-service` service which I mentioned in the previous section:
 
-***File [nginx-deployment.yaml]()***
+***File [nginx-deployment.yaml](https://raw.githubusercontent.com/vngcloud/vcontainer-helm-infra-documentation/main/manifests/nfs-server/nginx-deployment.yaml)***
 ```yaml=
 
 apiVersion: v1

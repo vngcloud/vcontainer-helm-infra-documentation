@@ -1,0 +1,68 @@
+####################################################################################################
+# Author: Cuong. Duong Manh <cuongdm3@vng.com.vn>
+# Desciption:
+#   - Create Nginx workload to use the NFS server
+#   - The Nginx workload will be deployed to the Kubernetes cluster
+####################################################################################################
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-pv                                        # [1] The PersistentVolume name, CAN be changed
+  labels:
+    app: nfs-data                                     # [2] The app label, CAN be changed
+spec:
+  capacity:
+    storage: 95Gi                                     # The volume size, MUST less than or equal to the size of the PVC that was mounted to the NFS server
+  accessModes:
+    - ReadWriteMany                                   # MUST be ReadWriteMany
+  nfs:
+    server: "<PUT_IPv4_ADDRESS_OF_NFS_SERVICE_HERE>"  # Change this value to proper IPv4 address
+    path: "/"
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-pvc                                       # [3] The PersistentVolumeClaim name, CAN be changed
+spec:
+  accessModes:
+    - ReadWriteMany                                   # MUST be ReadWriteMany
+  storageClassName: ""                                # MUST be empty
+  resources:
+    requests:
+      storage: 10Gi                                   # The volume size, MUST less than or equal to the size of the volume size of [1]
+  selector:
+    matchLabels:
+      app: nfs-data                                   # MUST be same value with [2]
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment                              # [4] The Deployment name, CAN be changed
+  labels:
+    app: nginx                                        # [6] The app label, CAN be changed
+spec:
+  replicas: 10                                        # [5] The number of replicas, CAN be changed
+  selector:
+    matchLabels:
+      app: nginx                                      # MUST be same value with [6]
+  template:
+    metadata:
+      labels:
+        app: nginx                                    # MUST be same value with [6]
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - mountPath: /var/lib/www/html              # The mount path in container, CAN be changed
+            name: my-volume-name                      # MUST be same value with [7]
+      volumes:
+      - name: my-volume-name                          # [7] The volume mount name, CAN be changed
+        persistentVolumeClaim:
+          claimName: nfs-pvc                          # MUST be same value with [3]
+          readOnly: false

@@ -5,7 +5,7 @@
 - One drawback of **block volume** is that it **DOES NOT** support the `ReadWriteMany` (`RWX`) mode, this is understandable because Linux filesystem type `ext4` **DOES NOT** have multiple node writing permission.
 - Therefore, to use `RWX` mode, the block volume must be replaced with a **shared file system** or **NFS server**.
 
-\\( \Rightarrow \\) To solve the above problem, users can build a NFS server right inside the Kubernetes clusters, ensure high availability for it using Kubernetes Deployment, and allow services inside the cluster to access it via Kubernetes Service.
+\\( \Rightarrow \\)  To solve the above problem, users can build an NFS server inside the Kubernetes clusters, ensure high availability using Kubernetes Deployment, and allow services inside the cluster to access it via Kubernetes Service.
 
 ## Prepare the necessary resources
 This laboratory exercise is conducted on a Kubernetes cluster comprising one master node and three worker nodes, all equipped with the **vContainer Storage Interface** plugin. The following resources are required:

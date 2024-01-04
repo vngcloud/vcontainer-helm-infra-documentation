@@ -1,0 +1,84 @@
+####################################################################################################
+# Author: Cuong. Duong Manh <cuongdm3@vng.com.vn>
+# Description:
+#  - This manifest creates a StorageClass using csi.vngcloud.vn provisioner.
+#  - And then create a PersistentVolumeClaim using the above StorageClass.
+#  - Finally, create a Deployment nfs-server using the above PersistentVolumeClaim, and expose 
+# nfs-server as Service.
+####################################################################################################
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nfs-server-sc                                                  # [1] The StorageClass name, CAN be changed
+provisioner: csi.vngcloud.vn
+parameters:
+  type: vtype-2dd22a8b-179d-484c-bb91-b0520e218f80                     # Change this value to proper Volume Type UUID
+allowVolumeExpansion: true
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-server-pvc                                                 # [2] The PersistentVolumeClaim name, CAN be changed
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi                                                   # [3] The volume size, CAN be changed
+  storageClassName: nfs-server-sc                                      # MUST be same value with [1]
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nfs-server                                                     # [7] The Deployment name, CAN be changed
+spec:
+  replicas: 3                                                          # [9] The number of replicas, this field is contrainted by the nodeSelector field below
+  selector:
+    matchLabels:
+      app: nfs-server                                                  # MUST be same value with [6]
+  template:
+    metadata:
+      labels:
+        app: nfs-server                                                # [6] The app label, CAN be changed
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: <PUT_THE_HOSTNAME_OF_THE_PROPER_NODE>  # This field MUST be set if the replicas [9] greater than 1
+      containers:
+      - name: nfs-server
+        image: registry.vngcloud.vn/public/volume-nfs:0.8
+        ports:
+        - name: nfs
+          containerPort: 2049
+        - name: mountd
+          containerPort: 20048
+        - name: rpcbind
+          containerPort: 111
+        securityContext:
+          privileged: true
+        volumeMounts:
+          - mountPath: /exports                                        # [5] The volume mount path, CAN be changed
+            name: my-volume-name                                       # MUST be same value with [4]
+      volumes:
+      - name: my-volume-name                                           # [4] The volume mount name, CAN be changed
+        persistentVolumeClaim:
+          claimName: nfs-server-pvc                                    # MUST be same value with [2]
+          readOnly: false
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nfs-service                                                    # [8] The Service name, CAN be changed
+spec:
+  ports:
+  - name: nfs
+    port: 2049
+  - name: mountd
+    port: 20048
+  - name: rpcbind
+    port: 111
+  selector:
+    app: nfs-server                                                    # MUST be same value with [6]

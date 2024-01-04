@@ -10,3 +10,4 @@
     - [`StorageClass` based on Volume Type](helm-charts/vcontainer-storage-interface/example/volume-type.md)
     - [Block volume](helm-charts/vcontainer-storage-interface/example/block-volume.md)
     - [Volume resizing](helm-charts/vcontainer-storage-interface/example/volume-resizing.md)
+    - [NFS server](helm-charts/vcontainer-storage-interface/example/nfs-server.md)

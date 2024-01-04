@@ -14,9 +14,9 @@ The **vContainer Helm Infra** repository houses **Helm Charts** designed to enha
 
 These **Helm charts** seamlessly integrate with the infrastructure and services offered by **VNG CLOUD**. Through the **VNG CLOUD portal**, customers can efficiently oversee the resources of their vContainer Kubernetes clusters. The currently supported Helm charts include:
 
-|#|Chart name|Description|Github|
+|#|Chart name|Description|Artifact/Github repository|
 |-|-|-|-|
-|1|[`vcontainer-storage-interface`](./helm-charts/vcontainer-storage-interface/index.md)|Provides `PersistentVolume` for **vContainer Kubernetes clusters**.|[https://github.com/vngcloud/vcontainer-storage-interface](https://github.com/vngcloud/vcontainer-storage-interface)|
+|1|[`vcontainer-storage-interface`](./helm-charts/vcontainer-storage-interface/index.md)|Provides `PersistentVolume` for **vContainer Kubernetes clusters**.|- **Artifact**: [https://artifacthub.io/packages/helm/vcontainer-helm-infra/vcontainer-storage-interface](https://artifacthub.io/packages/helm/vcontainer-helm-infra/vcontainer-storage-interface)<br>- **GitHub**: [https://github.com/vngcloud/vcontainer-storage-interface](https://github.com/vngcloud/vcontainer-storage-interface)|
 
 # Installation
 ## Prerequisites

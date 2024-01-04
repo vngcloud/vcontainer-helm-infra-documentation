@@ -219,3 +219,7 @@ kubectl get pods -owide
   ![](./../../../images/30.png)
 
 </center>
+
+
+## Resize the NFS server volume
+User can follow the steps in the [Volume resizing](./volume-resizing.md) section to resize the NFS server volume.

@@ -82,6 +82,18 @@ kubectl get csidriver
 
 </center>
 
+## Upgrade the `vcontainer-storage-interface` chart to latest version
+If you followed the instructions in the [Install the vcontainer-storage-interface chart](#install-the-vcontainer-storage-interface-chart) section to install the `vcontainer-storage-interface` chart, execute the following command to upgrade the chart:
+```bash=
+helm upgrade vcontainer-storage-interface vcontainer-helm-infra/vcontainer-storage-interface -n kube-system
+```
+
+<center>
+
+  ![](./../../images/30.png)
+
+</center>
+
 
 ## Uninstallation
 If you followed the instructions in the [Install the vcontainer-storage-interface chart](#install-the-vcontainer-storage-interface-chart) section to install the `vcontainer-storage-interface` chart, execute the following command to uninstall the chart:

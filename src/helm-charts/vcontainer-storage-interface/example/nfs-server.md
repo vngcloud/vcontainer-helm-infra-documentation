@@ -216,7 +216,7 @@ kubectl get pods -owide
 
 <center>
 
-  ![](./../../../images/30.png)
+  ![](./../../../images/31.png)
 
 </center>
 
